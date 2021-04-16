@@ -3,7 +3,7 @@ const { Kafka } = require("kafkajs");
 run().then(() => console.log("Done"), err => console.log(err));
 
 async function run() {
-  const kafka = new Kafka({ brokers: ["localhost:9092"] });
+  const kafka = new Kafka({ brokers: ["kafka-dev:9092"] });
 
   const producer = kafka.producer()
 
