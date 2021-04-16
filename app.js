@@ -7,21 +7,27 @@ async function run() {
 
   const producer = kafka.producer()
 
-  await producer.connect()
+  try{
+    await producer.connect()
 
-  for (let i = 0; i < 100; i++) {
-    await producer.send({
-      topic: 'kafka-test',
-      messages: [
-        {
-          value: JSON.stringify({
-            message: `Event ${i}`,
-            time: Date.now()
-          })
-        },
-      ],
-    })
+    for (let i = 0; i < 100; i++) {
+      console.info("Sending event " + i)
+      await producer.send({
+        topic: 'kafka-test',
+        messages: [
+          {
+            value: JSON.stringify({
+              message: `Event ${i}`,
+              time: Date.now()
+            })
+          },
+        ],
+      })
+    }
+  } catch (e) {
+    console.error(e)
   }
+  
 
   await producer.disconnect()
 }

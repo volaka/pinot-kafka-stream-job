@@ -9,7 +9,10 @@ spec:
       containers:
       - name: pinot-kafka-stream-job
         image: node
-        command: ["/bin/sh","-c"]
+        command: ["/bin/bash","-xc"]
         args: 
-          - top
+          - mkdir /app; cd /app;
+            git clone https://github.com/volaka/pinot-kafka-stream-job.git; cd pinot-kafka-stream-job;
+            npm install; npm start;
+            echo Done;
       restartPolicy: Never
