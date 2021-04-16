@@ -11,8 +11,5 @@ spec:
         image: node
         command: ["/bin/sh","-c"]
         args: 
-          - mkdir /app; cd /app;
-          - git pull https://github.com/volaka/pinot-kafka-stream-job.git; cd pinot-kafka-stream-job;
-          - npm install; npm start;
-          - echo Done;
+          - top
       restartPolicy: Never
